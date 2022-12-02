@@ -13,4 +13,5 @@ src漏洞通过通知
 crontab -e
 
 添加定时任务（src修改为下载下来的文件夹文件路径，一分钟一次）
+
 */1 * * * * cd src && python3 src.py > src.log
