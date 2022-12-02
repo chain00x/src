@@ -16,22 +16,26 @@ def get_num(srcname):
 	return vul_num
 
 def get_web_content_ali():
-	try:
-		url = ""#asrc个人主页（如：https://security.alibaba.com/api/asrc/pub/people.json?&secretUid=e4196ff8cddac7c13b599125cd11dda0）
-		header = {
-			"user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64)"
-			"AppleWebKit/537.36 (KHTML, like Gecko) "
-							"Chrome/75.0.3770.100 Safari/537.36 "}
-		response = requests.request(method="Get", url=url, headers=header)
-		json_str=json.loads(response.text)
-		num = (str(json_str["data"]["finishedLeakNum"]))
-		return num
-	except TimeoutError as e:
-		return None
+    try:
+        url = ""#asrc个人主页（如：https://security.alibaba.com/api/asrc/pub/people.json?&secretUid=e4196ff8cddac7c13b599125cd11dda0）
+        if url=="":
+            return str(0)
+        header = {
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64)"
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+                        "Chrome/75.0.3770.100 Safari/537.36 "}
+        response = requests.request(method="Get", url=url, headers=header)
+        json_str=json.loads(response.text)
+        num = (str(json_str["data"]["finishedLeakNum"]))
+        return num
+    except TimeoutError as e:
+        return None
 
 def get_web_content():
     try:
-        url = ""#tsrc个人主页（如：https://security.tencent.com/index.php/user/p/46259CBEF9A26602E3A7AFF83B44C952）
+        url = "https://security.tencent.com/index.php/user/p/46259CBEF9A26602E3A7AFF83B44C952"#tsrc个人主页（如：https://security.tencent.com/index.php/user/p/46259CBEF9A26602E3A7AFF83B44C952）
+        if url=="":
+            return str(0)
         header = {
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64)"
             "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -74,8 +78,8 @@ def tsrcparsing():
         print("tsrc: "+num)
         if num!=get_num("tsrc") and num.isdigit():
             m = Messenger(
-            token="",
-            secret=""#钉钉配置
+            token="3e2926203dd460da7881f0ac22d7cfc2eeddd2aa81628112abef03ae3a32c2ec",
+            secret="SEC0b03dabc556992ca927f4e4329c21fcade27d3210e5ff4bd8fe8a6599cfdeeb4"#钉钉配置
             )
             m.send_text("tsrc！")
             with open('src.json','a') as tsrctxt:
@@ -93,8 +97,8 @@ def asrcparsing():
     print("asrc: "+get_web_content_ali())
     if get_web_content_ali()!=get_num("asrc"):
         m = Messenger(
-        token="",
-        secret=""#钉钉配置
+        token="3e2926203dd460da7881f0ac22d7cfc2eeddd2aa81628112abef03ae3a32c2ec",
+        secret="SEC0b03dabc556992ca927f4e4329c21fcade27d3210e5ff4bd8fe8a6599cfdeeb4"#钉钉配置
         )
         m.send_text("asrc！")
         with open('src.json','a') as tsrctxt:
