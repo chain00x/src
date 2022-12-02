@@ -17,7 +17,7 @@ def get_num(srcname):
 
 def get_web_content_ali():
 	try:
-		url = ""//asrc个人主页（如：https://security.alibaba.com/api/asrc/pub/people.json?&secretUid=e4196ff8cddac7c13b599125cd11dda0）
+		url = ""#asrc个人主页（如：https://security.alibaba.com/api/asrc/pub/people.json?&secretUid=e4196ff8cddac7c13b599125cd11dda0）
 		header = {
 			"user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64)"
 			"AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -31,7 +31,7 @@ def get_web_content_ali():
 
 def get_web_content():
     try:
-        url = ""//tsrc个人主页（如：https://security.tencent.com/index.php/user/p/46259CBEF9A26602E3A7AFF83B44C952）
+        url = ""#tsrc个人主页（如：https://security.tencent.com/index.php/user/p/46259CBEF9A26602E3A7AFF83B44C952）
         header = {
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64)"
             "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -75,7 +75,7 @@ def tsrcparsing():
         if num!=get_num("tsrc") and num.isdigit():
             m = Messenger(
             token="",
-            secret=""//钉钉配置
+            secret=""#钉钉配置
             )
             m.send_text("tsrc！")
             with open('src.json','a') as tsrctxt:
@@ -94,7 +94,7 @@ def asrcparsing():
     if get_web_content_ali()!=get_num("asrc"):
         m = Messenger(
         token="",
-        secret=""//钉钉配置
+        secret=""#钉钉配置
         )
         m.send_text("asrc！")
         with open('src.json','a') as tsrctxt:
